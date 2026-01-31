@@ -1,7 +1,7 @@
 # Tennis Momentum Visualizer - v1 (momentum-arc-v1)
 
 ## Description
-A Next.js 14 application for visualizing tennis match momentum shifts.
+Tennis Momentum Visualizer: AI-powered tennis match visualization showing momentum shifts through interactive narrative arcs. Built with Next.js 14.
 
 ## Tech Stack
 - **Framework**: Next.js 14 (App Router)
