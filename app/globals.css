@@ -1,26 +1,48 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand Primary */
+  --primary-navy: #001A3E;
+  --primary-charcoal: #2C3E50;
+
+  /* Momentum States (angepasst ans Brand) */
+  --momentum-strong-negative: #FF4757;
+  --momentum-negative: #FF4757;
+  --momentum-neutral: #F8F9FA;
+  --momentum-positive: #00D96F;
+  --momentum-strong-positive: #00D96F;
+
+  /* Accent Colors */
+  --accent-electric-blue: #3498DB;
+
+  /* UI System (angepasst) */
+  --color-background: #F8F9FA;
+  --color-surface: #FFFFFF;
+  --color-text-primary: #001A3E;
+  --color-text-secondary: #2C3E50;
+  --color-border: rgba(0, 26, 62, 0.15);
+
+  /* Spacing */
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+
+  /* Typography */
+  --font-headline: 'Inter', -apple-system, sans-serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Fira Code', monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Typography Base */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  background: var(--color-background);
+  color: var(--color-text-primary);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-headline);
+  font-weight: 600;
 }
