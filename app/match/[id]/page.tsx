@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useParams } from 'next/navigation';
+import { useParams, notFound } from 'next/navigation';
 import Link from 'next/link';
 import matches from '../../../data/matches.json';
 import { calculateMomentum } from '../../../lib/momentum/momentum-engine';
@@ -14,22 +14,12 @@ export default function MatchDetail() {
     const matchId = params.id as string;
     const [activeSet, setActiveSet] = useState<number | 'all'>('all');
 
-    const foundMatch = (matches as Match[]).find((m: Match) => m.id === matchId);
+    const match = (matches as Match[]).find((m: Match) => m.id === matchId);
 
-    if (!foundMatch) {
-        return (
-            <div className="min-h-screen bg-[var(--color-background)] p-6 flex items-center justify-center">
-                <div className="text-center">
-                    <h1 className="text-4xl font-bold text-slate-900 mb-4">Match not found</h1>
-                    <Link href="/" className="text-blue-600 hover:text-blue-700">
-                        ← Back to Feed
-                    </Link>
-                </div>
-            </div>
-        );
+    if (!match) {
+        notFound();
     }
 
-    const match = foundMatch as Match;
     const fullMomentum = calculateMomentum(match);
 
     // Insights Logic: Find the biggest swings
@@ -61,7 +51,7 @@ export default function MatchDetail() {
                     <div className="flex bg-white p-1.5 rounded-2xl border border-slate-200 shadow-sm gap-1">
                         <button
                             onClick={() => setActiveSet('all')}
-                            className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${activeSet === 'all' ? 'bg-slate-900 text-white shadow-lg' : 'text-slate-500 hover:bg-slate-50'}`}
+                            className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all outline-none focus-visible:ring-2 focus-visible:ring-slate-400 active:scale-95 ${activeSet === 'all' ? 'bg-slate-900 text-white shadow-lg' : 'text-slate-500 hover:bg-slate-50'}`}
                         >
                             All
                         </button>
@@ -69,7 +59,7 @@ export default function MatchDetail() {
                             <button
                                 key={s.setNumber}
                                 onClick={() => setActiveSet(s.setNumber)}
-                                className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${activeSet === s.setNumber ? 'bg-slate-900 text-white shadow-lg' : 'text-slate-500 hover:bg-slate-50'}`}
+                                className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all outline-none focus-visible:ring-2 focus-visible:ring-slate-400 active:scale-95 ${activeSet === s.setNumber ? 'bg-slate-900 text-white shadow-lg' : 'text-slate-500 hover:bg-slate-50'}`}
                             >
                                 Set {s.setNumber}
                             </button>
@@ -83,7 +73,7 @@ export default function MatchDetail() {
                 {/* Main Visualization Card */}
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
                     <div className="lg:col-span-3 space-y-8">
-                        <div className="bg-white rounded-[32px] p-8 border border-slate-200 shadow-2xl overflow-hidden relative group">
+                        <div className="bg-white rounded-[32px] p-8 border border-slate-200 shadow-2xl relative group">
                             <div className="flex justify-between items-center mb-10">
                                 <div>
                                     <h2 className="text-3xl font-black text-slate-900 tracking-tighter">Momentum Analysis</h2>
@@ -94,7 +84,7 @@ export default function MatchDetail() {
                                 </div>
                             </div>
 
-                            <div className="h-[240px] md:h-[320px]">
+                            <div className="relative w-full aspect-[1000/320]">
                                 <MomentumChart
                                     momentum={fullMomentum}
                                     focusSet={activeSet}

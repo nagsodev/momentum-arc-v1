@@ -5,11 +5,11 @@ export function mapToVisual(states: number[], events: MomentumEvent[]): { colors
 
     // Color mapping based on momentum state (-2 to +2)
     const colorMap: Record<string, string> = {
-        '-2': '#C0152F', // Strong Negative
-        '-1': '#E68161', // Soft Negative
-        '0': '#F5F5F5',  // Neutral
-        '1': '#32808D',  // Soft Positive
-        '2': '#1A6873'   // Strong Positive
+        '-2': '#C0152F', // Player 2 Strong
+        '-1': '#C0152F', // Player 2 Soft
+        '0': '#94A3B8',  // Neutral (Pivot point)
+        '1': '#32808D',  // Player 1 Soft
+        '2': '#32808D'   // Player 1 Strong
     };
 
     // Positions for SVG viewBox (0-1000 width, 0-280 height)

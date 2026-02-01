@@ -6,14 +6,35 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Tennis Momentum Visualizer",
-  description: "AI-powered tennis match momentum visualization",
+  title: "Momentum Arc | Professional Tennis Analysis",
+  description: "Advanced AI-powered tennis match momentum visualization. Deep-dive into every swing, break point, and tactical shift with the professional Momentum Arc analyzer.",
+  keywords: ["tennis", "momentum", "analytics", "visualization", "ATP", "WTA", "match analysis"],
+  authors: [{ name: "Advanced Agentic Coding" }],
   openGraph: {
-    title: "Tennis Momentum Visualizer",
-    description: "AI-powered tennis match momentum visualization",
-    type: "website",
-    locale: "de_DE",
+    title: "Momentum Arc | Professional Tennis Analysis",
+    description: "AI-powered tennis match momentum visualization. See the narrative behind the score.",
+    url: "https://momentum-arc.vercel.app",
     siteName: "Momentum Arc",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Momentum Arc Analytics Dashboard",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Momentum Arc | Tennis Momentum Visualizer",
+    description: "Deep-dive into tennis match narratives with AI momentum curves.",
+    images: ["/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
@@ -30,11 +51,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} antialiased min-h-screen flex flex-col bg-[var(--color-background)] text-[var(--color-text-primary)]`}>
+      <body className={`${inter.className} antialiased min-h-screen flex flex-col bg-[var(--color-background)] text-[var(--color-text-primary)] transition-colors duration-300`}>
         {/* Brand Header */}
         <header className="w-full bg-[var(--primary-navy)] text-white shadow-lg sticky top-0 z-50 backdrop-blur-md bg-opacity-95">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
+            <Link href="/" className="flex items-center gap-3 hover:opacity-80 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--primary-navy)] rounded-xl p-1 transition-all">
               <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[var(--momentum-positive)] to-[var(--accent-electric-blue)] flex items-center justify-center shadow-lg transform rotate-3">
                 <span className="text-[var(--primary-navy)] font-black text-sm">M</span>
               </div>
@@ -43,16 +64,16 @@ export default function RootLayout({
               </span>
             </Link>
 
-            <nav className="hidden md:flex items-center gap-6 text-xs font-bold uppercase tracking-widest text-slate-300">
-              <Link href="/" className="hover:text-white transition-colors">Analyzer</Link>
-              <Link href="/" className="hover:text-white transition-colors">Live Feed</Link>
-              <Link href="/" className="hover:text-white transition-colors">Historical</Link>
+            <nav className="hidden md:flex items-center gap-8 text-[11px] font-black uppercase tracking-[0.2em] text-slate-400">
+              <Link href="/" className="hover:text-white transition-colors focus-visible:text-white outline-none">Analyzer</Link>
+              <Link href="/" className="hover:text-white transition-colors focus-visible:text-white outline-none">Live Feed</Link>
+              <Link href="/" className="hover:text-white transition-colors focus-visible:text-white outline-none">Historical</Link>
             </nav>
           </div>
         </header>
 
-        {/* Main Content */}
-        <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Main Content with Transition */}
+        <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 animate-page-enter">
           {children}
         </main>
 

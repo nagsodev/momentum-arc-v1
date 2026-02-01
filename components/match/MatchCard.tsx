@@ -82,8 +82,11 @@ export default function MatchCard({ match, momentum }: MatchCardProps) {
     }, [momentum]);
 
     return (
-        <Link href={`/match/${id}`} className="block group">
-            <div className="bg-white rounded-2xl p-4 border border-[var(--color-border)] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+        <Link
+            href={`/match/${id}`}
+            className="block group outline-none focus-visible:ring-4 focus-visible:ring-[var(--accent-electric-blue)] focus-visible:ring-offset-8 rounded-[2rem] transition-all"
+        >
+            <div className="bg-white rounded-2xl p-4 border border-[var(--color-border)] shadow-sm transition-all duration-500 ease-out group-hover:-translate-y-2 group-hover:shadow-2xl group-active:scale-[0.98]">
                 {/* Header: Tournament & Round */}
                 <div className="flex justify-between items-center mb-4">
                     <span className="text-[10px] font-bold uppercase tracking-widest text-[var(--color-text-tertiary, #94A3B8)]">
