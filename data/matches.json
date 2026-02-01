@@ -1,0 +1,219 @@
+{
+    "matches": [
+        {
+            "id": "ao2026-final",
+            "tournament": "Australian Open 2026",
+            "round": "Finale",
+            "date": "2026-01-31",
+            "player1": {
+                "name": "Novak Djokovic",
+                "country": "SRB",
+                "rank": 1
+            },
+            "player2": {
+                "name": "Carlos Alcaraz",
+                "country": "ESP",
+                "rank": 2
+            },
+            "sets": [
+                {
+                    "setNumber": 1,
+                    "games": 10,
+                    "score": "6-4",
+                    "winner": "player1"
+                },
+                {
+                    "setNumber": 2,
+                    "games": 10,
+                    "score": "4-6",
+                    "winner": "player2"
+                },
+                {
+                    "setNumber": 3,
+                    "games": 10,
+                    "score": "5-5",
+                    "winner": null
+                }
+            ],
+            "finalScore": "6-4, 4-6, 5-5",
+            "pointSequence": [
+                {
+                    "game": 1,
+                    "point": 1,
+                    "winner": "player1",
+                    "type": "ace",
+                    "server": "player1",
+                    "score": "15-0"
+                },
+                {
+                    "game": 1,
+                    "point": 2,
+                    "winner": "player2",
+                    "type": "unforced_error",
+                    "server": "player1",
+                    "score": "15-15"
+                },
+                {
+                    "game": 1,
+                    "point": 3,
+                    "winner": "player1",
+                    "type": "winner",
+                    "server": "player1",
+                    "score": "30-15"
+                },
+                {
+                    "game": 1,
+                    "point": 4,
+                    "winner": "player1",
+                    "type": "ace",
+                    "server": "player1",
+                    "score": "40-15"
+                },
+                {
+                    "game": 1,
+                    "point": 5,
+                    "winner": "player1",
+                    "type": "winner",
+                    "server": "player1",
+                    "score": "Game"
+                },
+                {
+                    "game": 2,
+                    "point": 1,
+                    "winner": "player2",
+                    "type": "winner",
+                    "server": "player2",
+                    "score": "0-15"
+                },
+                {
+                    "game": 2,
+                    "point": 2,
+                    "winner": "player1",
+                    "type": "unforced_error",
+                    "server": "player2",
+                    "score": "15-15"
+                },
+                {
+                    "game": 2,
+                    "point": 3,
+                    "winner": "player2",
+                    "type": "ace",
+                    "server": "player2",
+                    "score": "15-30"
+                },
+                {
+                    "game": 2,
+                    "point": 4,
+                    "winner": "player2",
+                    "type": "winner",
+                    "server": "player2",
+                    "score": "15-40"
+                },
+                {
+                    "game": 2,
+                    "point": 5,
+                    "winner": "player2",
+                    "type": "winner",
+                    "server": "player2",
+                    "score": "Game"
+                },
+                {
+                    "game": 3,
+                    "point": 1,
+                    "winner": "player1",
+                    "type": "winner",
+                    "server": "player1",
+                    "score": "15-0"
+                },
+                {
+                    "game": 3,
+                    "point": 2,
+                    "winner": "player1",
+                    "type": "forced_error",
+                    "server": "player1",
+                    "score": "30-0"
+                },
+                {
+                    "game": 3,
+                    "point": 3,
+                    "winner": "player2",
+                    "type": "winner",
+                    "server": "player1",
+                    "score": "30-15"
+                },
+                {
+                    "game": 3,
+                    "point": 4,
+                    "winner": "player2",
+                    "type": "unforced_error",
+                    "server": "player1",
+                    "score": "30-30"
+                },
+                {
+                    "game": 3,
+                    "point": 5,
+                    "winner": "player1",
+                    "type": "ace",
+                    "server": "player1",
+                    "score": "40-30"
+                },
+                {
+                    "game": 3,
+                    "point": 6,
+                    "winner": "player2",
+                    "type": "winner",
+                    "server": "player1",
+                    "score": "40-40"
+                },
+                {
+                    "game": 3,
+                    "point": 7,
+                    "winner": "player1",
+                    "type": "winner",
+                    "server": "player1",
+                    "score": "Ad-40"
+                },
+                {
+                    "game": 3,
+                    "point": 8,
+                    "winner": "player2",
+                    "type": "forced_error",
+                    "server": "player1",
+                    "score": "40-40"
+                },
+                {
+                    "game": 3,
+                    "point": 9,
+                    "winner": "player2",
+                    "type": "winner",
+                    "server": "player1",
+                    "score": "40-Ad"
+                },
+                {
+                    "game": 3,
+                    "point": 10,
+                    "winner": "player1",
+                    "type": "ace",
+                    "server": "player1",
+                    "score": "40-40"
+                },
+                {
+                    "game": 3,
+                    "point": 11,
+                    "winner": "player1",
+                    "type": "winner",
+                    "server": "player1",
+                    "score": "Ad-40"
+                },
+                {
+                    "game": 3,
+                    "point": 12,
+                    "winner": "player1",
+                    "type": "winner",
+                    "server": "player1",
+                    "score": "Game"
+                }
+            ]
+        }
+    ]
+}
