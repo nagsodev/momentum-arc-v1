@@ -4,7 +4,7 @@ import MomentumChart from '../../components/momentum/MomentumChart';
 import type { Match } from '../../lib/types';
 
 export default function MatchDetail() {
-    const match = matches.matches[0] as Match;
+    const match = (matches as Match[])[0];
     const momentum = calculateMomentum(match);
 
     return (

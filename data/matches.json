@@ -1,219 +1,408 @@
-{
-    "matches": [
-        {
-            "id": "ao2026-final",
-            "tournament": "Australian Open 2026",
-            "round": "Finale",
-            "date": "2026-01-31",
-            "player1": {
-                "name": "Novak Djokovic",
-                "country": "SRB",
-                "rank": 1
+[
+    {
+        "id": "djokovic-alcaraz-wimbledon-2024",
+        "tournament": "Wimbledon",
+        "round": "Final",
+        "date": "2024-07-14",
+        "player1": {
+            "name": "Novak Djokovic",
+            "country": "SRB",
+            "rank": 2
+        },
+        "player2": {
+            "name": "Carlos Alcaraz",
+            "country": "ESP",
+            "rank": 3
+        },
+        "sets": [
+            {
+                "setNumber": 1,
+                "games": 8,
+                "score": "2-6",
+                "winner": "Carlos Alcaraz"
             },
-            "player2": {
-                "name": "Carlos Alcaraz",
-                "country": "ESP",
-                "rank": 2
+            {
+                "setNumber": 2,
+                "games": 8,
+                "score": "2-6",
+                "winner": "Carlos Alcaraz"
             },
-            "sets": [
-                {
-                    "setNumber": 1,
-                    "games": 10,
-                    "score": "6-4",
-                    "winner": "player1"
-                },
-                {
-                    "setNumber": 2,
-                    "games": 10,
-                    "score": "4-6",
-                    "winner": "player2"
-                },
-                {
-                    "setNumber": 3,
-                    "games": 10,
-                    "score": "5-5",
-                    "winner": null
-                }
-            ],
-            "finalScore": "6-4, 4-6, 5-5",
-            "pointSequence": [
-                {
-                    "game": 1,
-                    "point": 1,
-                    "winner": "player1",
-                    "type": "ace",
-                    "server": "player1",
-                    "score": "15-0"
-                },
-                {
-                    "game": 1,
-                    "point": 2,
-                    "winner": "player2",
-                    "type": "unforced_error",
-                    "server": "player1",
-                    "score": "15-15"
-                },
-                {
-                    "game": 1,
-                    "point": 3,
-                    "winner": "player1",
-                    "type": "winner",
-                    "server": "player1",
-                    "score": "30-15"
-                },
-                {
-                    "game": 1,
-                    "point": 4,
-                    "winner": "player1",
-                    "type": "ace",
-                    "server": "player1",
-                    "score": "40-15"
-                },
-                {
-                    "game": 1,
-                    "point": 5,
-                    "winner": "player1",
-                    "type": "winner",
-                    "server": "player1",
-                    "score": "Game"
-                },
-                {
-                    "game": 2,
-                    "point": 1,
-                    "winner": "player2",
-                    "type": "winner",
-                    "server": "player2",
-                    "score": "0-15"
-                },
-                {
-                    "game": 2,
-                    "point": 2,
-                    "winner": "player1",
-                    "type": "unforced_error",
-                    "server": "player2",
-                    "score": "15-15"
-                },
-                {
-                    "game": 2,
-                    "point": 3,
-                    "winner": "player2",
-                    "type": "ace",
-                    "server": "player2",
-                    "score": "15-30"
-                },
-                {
-                    "game": 2,
-                    "point": 4,
-                    "winner": "player2",
-                    "type": "winner",
-                    "server": "player2",
-                    "score": "15-40"
-                },
-                {
-                    "game": 2,
-                    "point": 5,
-                    "winner": "player2",
-                    "type": "winner",
-                    "server": "player2",
-                    "score": "Game"
-                },
-                {
-                    "game": 3,
-                    "point": 1,
-                    "winner": "player1",
-                    "type": "winner",
-                    "server": "player1",
-                    "score": "15-0"
-                },
-                {
-                    "game": 3,
-                    "point": 2,
-                    "winner": "player1",
-                    "type": "forced_error",
-                    "server": "player1",
-                    "score": "30-0"
-                },
-                {
-                    "game": 3,
-                    "point": 3,
-                    "winner": "player2",
-                    "type": "winner",
-                    "server": "player1",
-                    "score": "30-15"
-                },
-                {
-                    "game": 3,
-                    "point": 4,
-                    "winner": "player2",
-                    "type": "unforced_error",
-                    "server": "player1",
-                    "score": "30-30"
-                },
-                {
-                    "game": 3,
-                    "point": 5,
-                    "winner": "player1",
-                    "type": "ace",
-                    "server": "player1",
-                    "score": "40-30"
-                },
-                {
-                    "game": 3,
-                    "point": 6,
-                    "winner": "player2",
-                    "type": "winner",
-                    "server": "player1",
-                    "score": "40-40"
-                },
-                {
-                    "game": 3,
-                    "point": 7,
-                    "winner": "player1",
-                    "type": "winner",
-                    "server": "player1",
-                    "score": "Ad-40"
-                },
-                {
-                    "game": 3,
-                    "point": 8,
-                    "winner": "player2",
-                    "type": "forced_error",
-                    "server": "player1",
-                    "score": "40-40"
-                },
-                {
-                    "game": 3,
-                    "point": 9,
-                    "winner": "player2",
-                    "type": "winner",
-                    "server": "player1",
-                    "score": "40-Ad"
-                },
-                {
-                    "game": 3,
-                    "point": 10,
-                    "winner": "player1",
-                    "type": "ace",
-                    "server": "player1",
-                    "score": "40-40"
-                },
-                {
-                    "game": 3,
-                    "point": 11,
-                    "winner": "player1",
-                    "type": "winner",
-                    "server": "player1",
-                    "score": "Ad-40"
-                },
-                {
-                    "game": 3,
-                    "point": 12,
-                    "winner": "player1",
-                    "type": "winner",
-                    "server": "player1",
-                    "score": "Game"
-                }
-            ]
-        }
-    ]
-}
+            {
+                "setNumber": 3,
+                "games": 13,
+                "score": "6-7",
+                "winner": "Carlos Alcaraz",
+                "tiebreak": true
+            }
+        ],
+        "pointSequence": [
+            {
+                "game": 1,
+                "point": 1,
+                "winner": "player2",
+                "type": "winner",
+                "server": "player1",
+                "score": "0-15"
+            },
+            {
+                "game": 1,
+                "point": 2,
+                "winner": "player2",
+                "type": "forced_error",
+                "server": "player1",
+                "score": "0-30"
+            },
+            {
+                "game": 1,
+                "point": 3,
+                "winner": "player1",
+                "type": "ace",
+                "server": "player1",
+                "score": "15-30"
+            },
+            {
+                "game": 1,
+                "point": 4,
+                "winner": "player2",
+                "type": "unforced_error",
+                "server": "player1",
+                "score": "15-40"
+            },
+            {
+                "game": 1,
+                "point": 5,
+                "winner": "player2",
+                "type": "winner",
+                "server": "player1",
+                "score": "Game Alcaraz"
+            },
+            {
+                "game": 9,
+                "point": 1,
+                "winner": "player2",
+                "type": "ace",
+                "server": "player2",
+                "score": "15-0"
+            },
+            {
+                "game": 9,
+                "point": 2,
+                "winner": "player2",
+                "type": "winner",
+                "server": "player2",
+                "score": "30-0"
+            },
+            {
+                "game": 9,
+                "point": 3,
+                "winner": "player2",
+                "type": "winner",
+                "server": "player2",
+                "score": "40-0"
+            },
+            {
+                "game": 9,
+                "point": 4,
+                "winner": "player2",
+                "type": "ace",
+                "server": "player2",
+                "score": "Game Alcaraz"
+            },
+            {
+                "game": 17,
+                "point": 1,
+                "winner": "player1",
+                "type": "winner",
+                "server": "player1",
+                "score": "15-0"
+            },
+            {
+                "game": 17,
+                "point": 2,
+                "winner": "player2",
+                "type": "winner",
+                "server": "player1",
+                "score": "15-15"
+            },
+            {
+                "game": 17,
+                "point": 3,
+                "winner": "player1",
+                "type": "ace",
+                "server": "player1",
+                "score": "30-15"
+            },
+            {
+                "game": 17,
+                "point": 4,
+                "winner": "player1",
+                "type": "winner",
+                "server": "player1",
+                "score": "40-15"
+            },
+            {
+                "game": 17,
+                "point": 5,
+                "winner": "player1",
+                "type": "winner",
+                "server": "player1",
+                "score": "Game Djokovic"
+            }
+        ],
+        "finalScore": "2-6, 2-6, 6-7(4)"
+    },
+    {
+        "id": "federer-nadal-wimbledon-2008",
+        "tournament": "Wimbledon",
+        "round": "Final",
+        "date": "2008-07-06",
+        "player1": {
+            "name": "Roger Federer",
+            "country": "SUI",
+            "rank": 1
+        },
+        "player2": {
+            "name": "Rafael Nadal",
+            "country": "ESP",
+            "rank": 2
+        },
+        "sets": [
+            {
+                "setNumber": 1,
+                "games": 10,
+                "score": "4-6",
+                "winner": "Rafael Nadal"
+            },
+            {
+                "setNumber": 2,
+                "games": 10,
+                "score": "4-6",
+                "winner": "Rafael Nadal"
+            },
+            {
+                "setNumber": 3,
+                "games": 13,
+                "score": "7-6",
+                "winner": "Roger Federer",
+                "tiebreak": true
+            },
+            {
+                "setNumber": 4,
+                "games": 13,
+                "score": "7-6",
+                "winner": "Roger Federer",
+                "tiebreak": true
+            },
+            {
+                "setNumber": 5,
+                "games": 16,
+                "score": "7-9",
+                "winner": "Rafael Nadal"
+            }
+        ],
+        "pointSequence": [
+            {
+                "game": 1,
+                "point": 1,
+                "winner": "player1",
+                "type": "ace",
+                "server": "player1",
+                "score": "15-0"
+            },
+            {
+                "game": 1,
+                "point": 2,
+                "winner": "player1",
+                "type": "winner",
+                "server": "player1",
+                "score": "30-0"
+            },
+            {
+                "game": 1,
+                "point": 3,
+                "winner": "player1",
+                "type": "winner",
+                "server": "player1",
+                "score": "40-0"
+            },
+            {
+                "game": 1,
+                "point": 4,
+                "winner": "player1",
+                "type": "winner",
+                "server": "player1",
+                "score": "Game Federer"
+            },
+            {
+                "game": 11,
+                "point": 1,
+                "winner": "player2",
+                "type": "winner",
+                "server": "player2",
+                "score": "15-0"
+            },
+            {
+                "game": 11,
+                "point": 2,
+                "winner": "player2",
+                "type": "winner",
+                "server": "player2",
+                "score": "30-0"
+            },
+            {
+                "game": 11,
+                "point": 3,
+                "winner": "player2",
+                "type": "ace",
+                "server": "player2",
+                "score": "40-0"
+            },
+            {
+                "game": 11,
+                "point": 4,
+                "winner": "player2",
+                "type": "winner",
+                "server": "player2",
+                "score": "Game Nadal"
+            },
+            {
+                "game": 21,
+                "point": 1,
+                "winner": "player1",
+                "type": "winner",
+                "server": "player1",
+                "score": "15-0"
+            },
+            {
+                "game": 21,
+                "point": 2,
+                "winner": "player1",
+                "type": "ace",
+                "server": "player1",
+                "score": "30-0"
+            },
+            {
+                "game": 21,
+                "point": 3,
+                "winner": "player1",
+                "type": "winner",
+                "server": "player1",
+                "score": "40-0"
+            },
+            {
+                "game": 21,
+                "point": 4,
+                "winner": "player1",
+                "type": "winner",
+                "server": "player1",
+                "score": "Game Federer"
+            }
+        ],
+        "finalScore": "4-6, 4-6, 7-6(5), 7-6(8), 7-9"
+    },
+    {
+        "id": "serena-venus-ao-2017",
+        "tournament": "Australian Open",
+        "round": "Final",
+        "date": "2017-01-28",
+        "player1": {
+            "name": "Serena Williams",
+            "country": "USA",
+            "rank": 2
+        },
+        "player2": {
+            "name": "Venus Williams",
+            "country": "USA",
+            "rank": 17
+        },
+        "sets": [
+            {
+                "setNumber": 1,
+                "games": 10,
+                "score": "6-4",
+                "winner": "Serena Williams"
+            },
+            {
+                "setNumber": 2,
+                "games": 10,
+                "score": "6-4",
+                "winner": "Serena Williams"
+            }
+        ],
+        "pointSequence": [
+            {
+                "game": 1,
+                "point": 1,
+                "winner": "player2",
+                "type": "winner",
+                "server": "player1",
+                "score": "0-15"
+            },
+            {
+                "game": 1,
+                "point": 2,
+                "winner": "player1",
+                "type": "ace",
+                "server": "player1",
+                "score": "15-15"
+            },
+            {
+                "game": 1,
+                "point": 3,
+                "winner": "player2",
+                "type": "unforced_error",
+                "server": "player1",
+                "score": "15-30"
+            },
+            {
+                "game": 1,
+                "point": 4,
+                "winner": "player2",
+                "type": "winner",
+                "server": "player1",
+                "score": "15-40"
+            },
+            {
+                "game": 1,
+                "point": 5,
+                "winner": "player2",
+                "type": "winner",
+                "server": "player1",
+                "score": "Game Venus"
+            },
+            {
+                "game": 11,
+                "point": 1,
+                "winner": "player1",
+                "type": "winner",
+                "server": "player2",
+                "score": "0-15"
+            },
+            {
+                "game": 11,
+                "point": 2,
+                "winner": "player1",
+                "type": "winner",
+                "server": "player2",
+                "score": "0-30"
+            },
+            {
+                "game": 11,
+                "point": 3,
+                "winner": "player1",
+                "type": "ace",
+                "server": "player2",
+                "score": "0-40"
+            },
+            {
+                "game": 11,
+                "point": 4,
+                "winner": "player1",
+                "type": "winner",
+                "server": "player2",
+                "score": "Game Serena"
+            }
+        ],
+        "finalScore": "6-4, 6-4"
+    }
+]

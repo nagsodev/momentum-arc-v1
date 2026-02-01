@@ -38,6 +38,7 @@ export interface MomentumOutput {
     events: MomentumEvent[];
     colors: string[];           // Hex colors für Kurve
     positions: Position[];      // SVG Koordinaten
+    setSeparators: number[];    // X-coordinates for set breaks
 }
 
 export interface MomentumEvent {

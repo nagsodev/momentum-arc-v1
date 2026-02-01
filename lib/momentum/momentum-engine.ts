@@ -13,7 +13,19 @@ export function calculateMomentum(match: Match): MomentumOutput {
     // 3. Map to visual properties (colors and positions)
     const { colors, positions } = mapToVisual(states, events);
 
-    return { states, events, colors, positions };
+    // 4. Calculate set separators (X coordinates)
+    const totalGames = states.length;
+    let cumulativeGames = 0;
+    const setSeparators: number[] = [];
+
+    // We only need separators BETWEEN sets
+    for (let i = 0; i < match.sets.length - 1; i++) {
+        cumulativeGames += match.sets[i].games;
+        const x = (cumulativeGames / totalGames) * 1000;
+        setSeparators.push(x);
+    }
+
+    return { states, events, colors, positions, setSeparators };
 }
 
 // Test Export für app/page.tsx
