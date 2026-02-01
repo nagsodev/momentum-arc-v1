@@ -1,7 +1,6 @@
 import matches from '../../data/matches.json';
 import { calculateMomentum } from '../../lib/momentum/momentum-engine';
-import MomentumArc from '../../components/momentum/MomentumArc';
-import GameTimeline from '../../components/momentum/GameTimeline';
+import MomentumChart from '../../components/momentum/MomentumChart';
 import type { Match } from '../../lib/types';
 
 export default function MatchDetail() {
@@ -32,11 +31,7 @@ export default function MatchDetail() {
                         </div>
                     </div>
 
-                    <MomentumArc momentum={momentum} />
-
-                    <div className="mt-8">
-                        <GameTimeline momentum={momentum} sets={match.sets} />
-                    </div>
+                    <MomentumChart momentum={momentum} sets={match.sets} />
                 </div>
 
                 {/* Stats */}

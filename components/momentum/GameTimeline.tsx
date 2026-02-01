@@ -5,64 +5,144 @@ import type { MomentumOutput, Set } from '../../lib/types';
 interface GameTimelineProps {
     momentum: MomentumOutput;
     sets: Set[];
+    width?: number;
+    height?: number;
+    overlayMode?: boolean;
 }
 
-export default function GameTimeline({ momentum, sets }: GameTimelineProps) {
+export default function GameTimeline({
+    momentum,
+    sets,
+    width = 800,
+    height = 280,
+    overlayMode = false
+}: GameTimelineProps) {
     const totalGames = momentum.states.length;
 
+    // Im Overlay-Modus sitzen die Blöcke am unteren Rand
+    const blockHeight = overlayMode ? 16 : 40;
+    const blockY = overlayMode ? height - blockHeight - 20 : (height - blockHeight) / 2;
+
     return (
-        <div className="w-full overflow-x-auto">
-            <div className="flex gap-1 h-16 md:h-20 p-2 bg-[var(--color-surface)] rounded-xl border border-[var(--color-border)] shadow-inner">
-                {sets.map((set, setIndex) => (
-                    <React.Fragment key={`set-${set.setNumber}`}>
-                        {/* Set Games */}
-                        {Array.from({ length: set.games }, (_, gameIndex) => {
-                            const gameNum = setIndex * 10 + gameIndex; // Simplified
-                            const state = momentum.states[gameNum];
-                            const color = momentum.colors[gameNum];
-
-                            return (
-                                <div
-                                    key={`${set.setNumber}-${gameIndex + 1}`}
-                                    className="flex-1 min-w-[32px] rounded-lg border border-white/50 shadow-sm hover:shadow-md transition-all cursor-pointer relative overflow-hidden"
-                                    style={{ backgroundColor: color }}
-                                    title={`Game ${gameNum + 1}: State ${state}`}
-                                >
-                                    {(gameIndex === 0 || gameIndex === set.games - 1) && (
-                                        <span className="absolute -bottom-4 left-1/2 -translate-x-1/2 text-xs font-mono text-[var(--color-text-secondary)] bg-[var(--color-surface)] px-1 rounded">
-                                            {gameNum + 1}
-                                        </span>
-                                    )}
-                                </div>
-                            );
-                        })}
-                        {/* Set Separator */}
-                        {setIndex < sets.length - 1 && (
-                            <div className="w-px bg-[var(--color-border)] mx-2 relative self-stretch flex-shrink-0">
-                                <span className="absolute -top-8 left-1/2 -translate-x-1/2 text-xs font-bold text-[var(--primary-charcoal)] whitespace-nowrap">
-                                    SET {setIndex + 2}
-                                </span>
-                            </div>
-                        )}
-                    </React.Fragment>
+        <div className={`w-full ${overlayMode ? '' : 'p-6 bg-[var(--color-surface)] rounded-2xl border border-[var(--color-border)] shadow-lg'}`}>
+            <svg
+                viewBox={`0 0 ${width} ${height}`}
+                className="w-full block"
+                style={{ height: overlayMode ? '100%' : '80px' }}
+                preserveAspectRatio="xMidYMid meet"
+            >
+                {/* Gridlines nur wenn nicht im Overlay (da MomentumArc sie schon hat) */}
+                {!overlayMode && [56, 112, 140, 168, 224].map(y => (
+                    <line
+                        key={y}
+                        x1="0"
+                        y1={y}
+                        x2={width}
+                        y2={y}
+                        stroke="rgba(0,26,62,0.1)"
+                        strokeWidth="1"
+                        strokeDasharray="4,4"
+                    />
                 ))}
-            </div>
 
-            {/* Legend */}
-            <div className="flex gap-6 justify-center mt-4 text-xs text-[var(--color-text-secondary)] flex-wrap">
-                <div className="flex items-center gap-2">
-                    <div className="w-6 h-4 bg-[var(--momentum-strong-negative)] rounded"></div>
-                    <span>Negative</span>
+                {/* Game blocks using the same X positions as the arc */}
+                {momentum.positions.map((pos, i) => {
+                    if (i === 0) return null; // Skip first position
+
+                    const prevPos = momentum.positions[i - 1];
+                    const blockWidth = pos.x - prevPos.x;
+                    // IMPORTANT: states[i-1] corresponds to the segment ending at positions[i]
+                    const state = momentum.states[i - 1];
+                    const color = momentum.colors[i - 1];
+
+                    return (
+                        <g key={`game-${i}`}>
+                            <rect
+                                x={prevPos.x}
+                                y={blockY}
+                                width={blockWidth}
+                                height={blockHeight}
+                                fill={color}
+                                stroke="rgba(255,255,255,0.2)"
+                                strokeWidth="1"
+                                rx="2"
+                                className="hover:opacity-80 transition-opacity cursor-pointer"
+                            >
+                                <title suppressHydrationWarning>{`Game ${i}: State ${state}`}</title>
+                            </rect>
+
+                            {/* Game labels */}
+                            {!overlayMode && (i === 1 || i === totalGames || i % 5 === 0) && (
+                                <text
+                                    x={prevPos.x + blockWidth / 2}
+                                    y={blockY + blockHeight + 15}
+                                    textAnchor="middle"
+                                    fontSize="10"
+                                    fill="var(--color-text-secondary)"
+                                >
+                                    {i}
+                                </text>
+                            )}
+                        </g>
+                    );
+                })}
+
+                {/* Set separators */}
+                {sets.map((set, setIndex) => {
+                    if (setIndex === sets.length - 1) return null;
+
+                    let gamesBeforeNextSet = 0;
+                    for (let i = 0; i <= setIndex; i++) {
+                        gamesBeforeNextSet += sets[i].games;
+                    }
+
+                    const separatorPos = momentum.positions[gamesBeforeNextSet];
+                    if (!separatorPos) return null;
+
+                    return (
+                        <g key={`sep-${setIndex}`}>
+                            <line
+                                x1={separatorPos.x}
+                                y1={0}
+                                x2={separatorPos.x}
+                                y2={height}
+                                stroke="var(--color-border)"
+                                strokeWidth="1"
+                                strokeDasharray="2,2"
+                            />
+                            {!overlayMode && (
+                                <text
+                                    x={separatorPos.x}
+                                    y={20}
+                                    textAnchor="middle"
+                                    fontSize="10"
+                                    fontWeight="bold"
+                                    fill="var(--color-text-secondary)"
+                                >
+                                    SET {setIndex + 2}
+                                </text>
+                            )}
+                        </g>
+                    );
+                })}
+            </svg>
+
+            {!overlayMode && (
+                <div className="flex gap-6 justify-center mt-4 text-xs text-[var(--color-text-secondary)] flex-wrap">
+                    <div className="flex items-center gap-2">
+                        <div className="w-6 h-4 bg-[var(--momentum-strong-negative)] rounded"></div>
+                        <span>Negative</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <div className="w-6 h-4 bg-[var(--momentum-neutral)] border rounded"></div>
+                        <span>Neutral</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <div className="w-6 h-4 bg-[var(--momentum-strong-positive)] rounded"></div>
+                        <span>Positive</span>
+                    </div>
                 </div>
-                <div className="flex items-center gap-2">
-                    <div className="w-6 h-4 bg-[var(--momentum-neutral)] border rounded"></div>
-                    <span>Neutral</span>
-                </div>
-                <div className="flex items-center gap-2">
-                    <div className="w-6 h-4 bg-[var(--momentum-strong-positive)] rounded"></div>
-                    <span>Positive</span>
-                </div>
-            </div>
+            )}
         </div>
     );
 }

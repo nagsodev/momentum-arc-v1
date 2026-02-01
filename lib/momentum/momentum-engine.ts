@@ -3,18 +3,17 @@ import type { Match, MomentumOutput, MomentumEvent, Position } from '../types';
 export function calculateMomentum(match: Match): MomentumOutput {
     const totalGames = match.sets.reduce((sum, set) => sum + set.games, 0);
 
-    // v1: Realistische Momentum States (ersetzt später durch Event-basierte Logik)
     const states: number[] = [];
     const colors: string[] = [];
     const positions: Position[] = [];
 
-    // Djokovic AO Final Pattern:
-    // Set 1: Djokovic baut Momentum auf
-    // Set 2: Alcaraz Rebreak → Swing
-    // Set 3: Oscillation
+    // Start-Position (Game 0)
+    positions.push({ x: 0, y: 140 });
+
     for (let i = 0; i < totalGames; i++) {
         let state: number;
 
+        // Djokovic AO Final Pattern
         if (i < 4) state = 0;           // Neutral Start
         else if (i < 8) state = 1;      // Djokovic Control
         else if (i < 10) state = 2;     // Djokovic Peak
@@ -27,23 +26,22 @@ export function calculateMomentum(match: Match): MomentumOutput {
 
         states.push(state);
 
-        // Brand Colors mappen
+        // Brand Colors
         const colorMap: Record<number, string> = {
-            '-2': '#FF4757',    // Signal-Rot
+            '-2': '#FF4757',    // Red
             '-1': '#FF4757',
-            '0': '#F8F9FA',     // Off-White
-            '1': '#00D96F',     // Neon-Grün
+            '0': '#F8F9FA',     // Neutral
+            '1': '#00D96F',     // Green
             '2': '#00D96F'
         };
         colors.push(colorMap[state]);
 
-        // SVG Positionen (viewBox 0-1000 x 0-280)
-        const x = i === 0 ? 0 : (i / (totalGames - 1)) * 1000;
-        const y = 280 - ((state + 2) / 4 * 280);
+        // SVG Positionen (Default Scale 800x280)
+        const x = ((i + 1) / totalGames) * 800;
+        const y = 140 - (state * 40); // 0 -> 140, 1 -> 100, 2 -> 60, -1 -> 180, -2 -> 220
         positions.push({ x, y });
     }
 
-    // Demo Events (Tier 1/2)
     const events: MomentumEvent[] = [
         { game: 7, type: 'break', tier: 1, name: 'Break Djokovic', icon: '🔓', player: 'player1' },
         { game: 15, type: 'rebreak', tier: 1, name: 'Rebreak Alcaraz', icon: '🔁', player: 'player2' },
@@ -51,12 +49,7 @@ export function calculateMomentum(match: Match): MomentumOutput {
         { game: 26, type: 'point_streak', tier: 2, name: '5-Point Streak', icon: '⚡', player: 'player1' }
     ];
 
-    return {
-        states,
-        events,
-        colors,
-        positions
-    };
+    return { states, events, colors, positions };
 }
 
 // Test Export für app/page.tsx

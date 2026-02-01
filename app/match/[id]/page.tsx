@@ -3,8 +3,7 @@ import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import matches from '../../../data/matches.json';
 import { calculateMomentum } from '../../../lib/momentum/momentum-engine';
-import MomentumArc from '../../../components/momentum/MomentumArc';
-import GameTimeline from '../../../components/momentum/GameTimeline';
+import MomentumChart from '../../../components/momentum/MomentumChart';
 import type { Match } from '../../../lib/types';
 
 export default function MatchDetail() {
@@ -65,12 +64,7 @@ export default function MatchDetail() {
                 {/* MomentumArc + Timeline */}
                 <div className="bg-white/70 backdrop-blur-sm border border-slate-200 rounded-3xl p-8 mb-8 shadow-xl">
                     <h2 className="text-2xl font-bold text-slate-900 mb-6">Momentum Visualization</h2>
-                    <MomentumArc momentum={momentum} />
-
-                    <div className="mt-8">
-                        <h3 className="text-xl font-bold text-slate-900 mb-4">Game Timeline</h3>
-                        <GameTimeline momentum={momentum} sets={match.sets} />
-                    </div>
+                    <MomentumChart momentum={momentum} sets={match.sets} />
                 </div>
 
                 {/* Stats */}

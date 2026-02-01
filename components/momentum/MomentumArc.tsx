@@ -1,27 +1,25 @@
 'use client';
-import type { MomentumOutput, Position } from '../../lib/types';
+import type { MomentumOutput } from '../../lib/types';
 import { useEffect, useRef } from 'react';
 
 interface MomentumArcProps {
     momentum: MomentumOutput;
     width?: number;
     height?: number;
+    overlayMode?: boolean;
 }
 
 export default function MomentumArc({
     momentum,
     width = 800,
-    height = 280
+    height = 280,
+    overlayMode = false
 }: MomentumArcProps) {
     const svgRef = useRef<SVGSVGElement>(null);
 
     useEffect(() => {
         const svg = svgRef.current;
         if (!svg) return;
-
-        // Clear previous content to avoid partial updates causing issues if needed, 
-        // although the cleanup function handles it, this is safe for re-renders within the same mount if refs persist differently.
-        // Actually the cleanup function `svg.innerHTML = ''` runs before this effect re-runs, so we are good.
 
         // Gridlines (5 Linien)
         const gridY = [56, 112, 140, 168, 224];
@@ -31,7 +29,7 @@ export default function MomentumArc({
             line.setAttribute('y1', y.toString());
             line.setAttribute('x2', width.toString());
             line.setAttribute('y2', y.toString());
-            line.setAttribute('stroke', 'rgba(0,26,62,0.15)');
+            line.setAttribute('stroke', 'rgba(0,26,62,0.1)');
             line.setAttribute('stroke-width', y === 140 ? '2' : '1');
             line.setAttribute('stroke-dasharray', '4,4');
             svg.appendChild(line);
@@ -42,16 +40,14 @@ export default function MomentumArc({
             if (i === 0) return;
 
             const prev = momentum.positions[i - 1];
-            const isHardOverride = Math.abs(momentum.states[i] - momentum.states[i - 1]) >= 2;
+            const isHardOverride = Math.abs(momentum.states[i - 1] - (momentum.states[i - 2] || 0)) >= 2;
 
             const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-            const color = momentum.colors[i];
+            const color = momentum.colors[i - 1];
 
             if (isHardOverride) {
-                // Scharfe Kante
                 path.setAttribute('d', `M ${prev.x} ${prev.y} L ${pos.x} ${pos.y}`);
             } else {
-                // Glatte Kurve
                 const midX = (prev.x + pos.x) / 2;
                 const midY = (prev.y + pos.y) / 2;
                 path.setAttribute('d', `M ${prev.x} ${prev.y} Q ${midX} ${midY} ${pos.x} ${pos.y}`);
@@ -67,8 +63,7 @@ export default function MomentumArc({
 
         // Event Markers
         momentum.events.forEach(event => {
-            const pos = momentum.positions[event.game - 1]; // game is 1-indexed, positions 0-indexed? 
-            // Assuming user logic is correct: game - 1
+            const pos = momentum.positions[event.game];
             if (!pos) return;
 
             const marker = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
@@ -80,7 +75,6 @@ export default function MomentumArc({
             marker.setAttribute('stroke-width', '2');
             svg.appendChild(marker);
 
-            // Event Icon (Text)
             const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
             text.setAttribute('x', pos.x.toString());
             text.setAttribute('y', (pos.y + 4).toString());
@@ -92,26 +86,28 @@ export default function MomentumArc({
             svg.appendChild(text);
         });
 
-        // Cleanup
         return () => {
             svg.innerHTML = '';
         };
     }, [momentum, width, height]);
 
     return (
-        <div className="bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-border)] shadow-lg">
+        <div className={overlayMode ? 'w-full h-full' : 'bg-[var(--color-surface)] rounded-2xl p-6 border border-[var(--color-border)] shadow-lg'}>
             <svg
                 ref={svgRef}
                 viewBox={`0 0 ${width} ${height}`}
-                className="w-full h-[280px] block"
+                className="w-full block"
+                style={{ height: overlayMode ? '100%' : '280px' }}
                 preserveAspectRatio="xMidYMid meet"
             />
-            <div className="mt-4 flex gap-4 text-xs text-[var(--color-text-secondary)] justify-center flex-wrap">
-                <span>🔴 Negative</span>
-                <span>⚪ Neutral</span>
-                <span>🟢 Positive</span>
-                <span className="text-[var(--accent-electric-blue)]">🔵 Tier 1 Event</span>
-            </div>
+            {!overlayMode && (
+                <div className="mt-4 flex gap-4 text-xs text-[var(--color-text-secondary)] justify-center flex-wrap">
+                    <span>🔴 Negative</span>
+                    <span>⚪ Neutral</span>
+                    <span>🟢 Positive</span>
+                    <span className="text-[var(--accent-electric-blue)]">🔵 Tier 1 Event</span>
+                </div>
+            )}
         </div>
     );
 }
